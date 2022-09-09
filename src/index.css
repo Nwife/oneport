@@ -3,3 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* sidebar */
+.about a {
+    color: #6B7280;
+}

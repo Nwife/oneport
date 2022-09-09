@@ -1,5 +1,5 @@
 export default function Content() {
   return (
-    <div>Content</div>
+    <div className="bg-red-100 flex-1">Content</div>
   )
 }
