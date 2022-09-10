@@ -5,7 +5,7 @@ import logo from '../../assets/oneport-logo.svg';
 
 export default function Sidebar() {
   return (
-    <div className='h-screen w-72 shrink-0 py-[35px] px-[41px] overflow-auto'>
+    <div className='hidden md:block h-screen w-72 shrink-0 py-[35px] px-[41px] border-x-2 border-x-lighterGrey overflow-auto'>
         <div><img src={logo} alt="logo" className="w-40" /></div>
         <nav className='mt-[93px] flex flex-col space-y-8 about'>
             <NavLink to='/' className='flex items-center space-x-9 text-lg'>
