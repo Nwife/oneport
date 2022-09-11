@@ -12,45 +12,6 @@ export default function Customers() {
             <img src={cross} alt="cross" />
         </button>
         <div className='customer-table mt-10'>
-            {/* <div className="customer-table_head flex items-center mb-3">
-                <p className='text-lightGrey text-xs font-medium w-[16.27%]'>FIRST NAME</p>
-                <p className='text-lightGrey text-xs font-medium w-[9%]'>LAST NAME</p>
-                <p className='text-lightGrey text-xs font-medium w-[23.25%]'>EMAIL ADDRESS</p>
-                <p className='text-lightGrey text-xs font-medium w-[15.77%]'>PHONE NUMBER</p>
-                <p className='text-lightGrey text-xs font-medium w-[19.04%]'>LAST LOGIN</p>
-                <p className='w-[16.67%] flex-1'>Hi</p>
-            </div> */}
-            <div className="customer-table_body">
-                {/* <div className="body-item flex items-center border-gray-100 border-2 py-7 rounded-lg font-medium">
-                    <div className="name flex items-center space-x-3 w-[16.27%]">
-                        <img className='ml-[18px]' src={profile} alt="profile" />
-                        <p>Adewumi</p>
-                    </div>
-                    <p className='w-[9%]'>Adebayo</p>
-                    <p className='w-[23.25%]'>debaryour@gmail.com</p>
-                    <p className='w-[15.77%]'>08087656543</p>
-                    <p className='w-[19.04%]'>Apr 02, 2022</p>
-                    <div className='flex flex-1 justify-end items-center'>
-                        <Link to='/' className='py-3.5 px-5 text-sm rounded-md border-2 border-gray-100'>Shipments</Link>
-                        <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[26px] text-white'>Edit</Link>
-                    </div>
-                </div> */}
-                {/* <div className="body-item flex items-center border-gray-100 border-2 py-7 rounded-lg font-medium">
-                    <div className="name flex items-center space-x-3 w-[16.27%]">
-                        <img className='ml-[26px]' src={profile} alt="profile" />
-                        <p>Adewumi</p>
-                    </div>
-                    <p className='w-[9%]'>Adebayo</p>
-                    <p className='w-[23.25%]'>debaryour@gmail.com</p>
-                    <p className='w-[15.77%]'>08087656543</p>
-                    <p className='w-[15.77%]'>Apr 02, 2022</p>
-                    <div className='flex flex-1 justify-end items-center'>
-                        <Link to='/' className='py-3.5 px-5 text-sm rounded-md border-2 border-gray-100'>Shipments</Link>
-                        <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>Edit</Link>
-                    </div>
-                </div> */}
-            </div>
-
             <div>
                 <table className='w-full border-separate border-spacing-0'>
                     <thead className='mb-[11px]'>
