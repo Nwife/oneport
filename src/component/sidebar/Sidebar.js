@@ -5,7 +5,7 @@ import logo from '../../assets/oneport-logo.svg';
 
 export default function Sidebar() {
   return (
-    <div className='hidden md:block h-screen w-72 shrink-0 py-[35px] px-[41px] border-x-2 border-x-lighterGrey overflow-auto'>
+    <div className='hidden md:block h-screen w-72 shrink-0 py-[35px] px-[41px] border-x-[1px] border-x-lighterGrey'>
         <div><img src={logo} alt="logo" className="w-40" /></div>
         <nav className='mt-[83px] flex flex-col space-y-8 about'>
             <NavLink to='/' className='flex items-center space-x-9 text-lg'>
@@ -16,7 +16,7 @@ export default function Sidebar() {
             </NavLink>
             <NavLink to='/' className='flex items-center space-x-9 text-lg'>
                 <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.6 10A9.6 9.6 0 1 1 .4 10a9.6 9.6 0 1 1 19.2 0Zm-7.2-3.6a2.4 2.4 0 1 1-4.8 0 2.4 2.4 0 0 1 4.8 0ZM10 11.2a6 6 0 0 0-5.455 3.499 7.184 7.184 0 0 0 5.455 2.5c2.18 0 4.135-.969 5.455-2.5a6 6 0 0 0-5.455-3.5Z" fill="#6B7280"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M19.6 10A9.6 9.6 0 1 1 .4 10a9.6 9.6 0 1 1 19.2 0Zm-7.2-3.6a2.4 2.4 0 1 1-4.8 0 2.4 2.4 0 0 1 4.8 0ZM10 11.2a6 6 0 0 0-5.455 3.499 7.184 7.184 0 0 0 5.455 2.5c2.18 0 4.135-.969 5.455-2.5a6 6 0 0 0-5.455-3.5Z" fill="#6B7280"/>
                 </svg>
                 <span className='block'>Admin</span>
             </NavLink>
@@ -35,13 +35,13 @@ export default function Sidebar() {
             </NavLink>
             <NavLink to='/' className='flex items-center space-x-9 text-lg'>
                 <svg width="20" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="m12.4.903-4.8 4.8v15.394l4.8-4.8V.903ZM2.449 2.952A1.2 1.2 0 0 0 .4 3.8v12c0 .318.126.624.351.849L5.2 21.097V5.703L2.449 2.952ZM19.249 5.352 14.8.903v15.394l2.752 2.752A1.2 1.2 0 0 0 19.6 18.2v-12a1.2 1.2 0 0 0-.351-.848Z" fill="#6B7280"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="m12.4.903-4.8 4.8v15.394l4.8-4.8V.903ZM2.449 2.952A1.2 1.2 0 0 0 .4 3.8v12c0 .318.126.624.351.849L5.2 21.097V5.703L2.449 2.952ZM19.249 5.352 14.8.903v15.394l2.752 2.752A1.2 1.2 0 0 0 19.6 18.2v-12a1.2 1.2 0 0 0-.351-.848Z" fill="#6B7280"/>
                 </svg>
                 <span className='block'>Tracking</span>
             </NavLink>
             <NavLink to='/' className='flex items-center space-x-9 text-lg'>
                 <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M.8 2.8A2.4 2.4 0 0 1 3.2.4h5.503a2.4 2.4 0 0 1 1.697.703L14.497 5.2a2.4 2.4 0 0 1 .703 1.697V17.2a2.4 2.4 0 0 1-2.4 2.4H3.2a2.4 2.4 0 0 1-2.4-2.4V2.8ZM3.2 10a1.2 1.2 0 0 1 1.2-1.2h7.2a1.2 1.2 0 1 1 0 2.4H4.4A1.2 1.2 0 0 1 3.2 10Zm1.2 3.6a1.2 1.2 0 0 0 0 2.4h7.2a1.2 1.2 0 1 0 0-2.4H4.4Z" fill="#6B7280"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M.8 2.8A2.4 2.4 0 0 1 3.2.4h5.503a2.4 2.4 0 0 1 1.697.703L14.497 5.2a2.4 2.4 0 0 1 .703 1.697V17.2a2.4 2.4 0 0 1-2.4 2.4H3.2a2.4 2.4 0 0 1-2.4-2.4V2.8ZM3.2 10a1.2 1.2 0 0 1 1.2-1.2h7.2a1.2 1.2 0 1 1 0 2.4H4.4A1.2 1.2 0 0 1 3.2 10Zm1.2 3.6a1.2 1.2 0 0 0 0 2.4h7.2a1.2 1.2 0 1 0 0-2.4H4.4Z" fill="#6B7280"/>
                 </svg>
                 <span className='block'>Documents</span>
             </NavLink>
@@ -60,7 +60,7 @@ export default function Sidebar() {
             </NavLink>
             <NavLink to='/' className='flex items-center space-x-9 text-lg'>
                 <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.2.4A2.4 2.4 0 0 0 .8 2.8v14.4a2.4 2.4 0 0 0 2.4 2.4h9.6a2.4 2.4 0 0 0 2.4-2.4V6.897a2.4 2.4 0 0 0-.703-1.697L10.4 1.103A2.4 2.4 0 0 0 8.703.4H3.2ZM4.4 10a1.2 1.2 0 0 0 0 2.4h7.2a1.2 1.2 0 1 0 0-2.4H4.4Z" fill="#6B7280"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.2.4A2.4 2.4 0 0 0 .8 2.8v14.4a2.4 2.4 0 0 0 2.4 2.4h9.6a2.4 2.4 0 0 0 2.4-2.4V6.897a2.4 2.4 0 0 0-.703-1.697L10.4 1.103A2.4 2.4 0 0 0 8.703.4H3.2ZM4.4 10a1.2 1.2 0 0 0 0 2.4h7.2a1.2 1.2 0 1 0 0-2.4H4.4Z" fill="#6B7280"/>
                 </svg>
                 <span className='block'>Invoice</span>
             </NavLink>

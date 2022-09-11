@@ -7,7 +7,7 @@ import caret from '../../assets/caret.svg';
 
 export default function TopNav() {
   return (
-    <div className='px-28 py-6 flex items-center justify-between border-b-2'>
+    <div className='px-28 py-6 flex items-center justify-between border-b-[1px]'>
         <h1 className='text-[28px] font-medium'>Customers</h1>
         <div className='flex items-center'>
             <img src={bell} alt="bell" />

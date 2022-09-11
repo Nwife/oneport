@@ -10,7 +10,7 @@ export default function Content() {
   return (
     <div className="flex-1">
         <TopNav />
-        <div className='py-[70px] px-[113px]'>
+        <div className='py-[70px] px-[70px]'>
           <Routes>
             <Route index element={<Customers />} />
             <Route path='/shipment' element={<Shipments />} />

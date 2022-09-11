@@ -4,7 +4,7 @@ import Content from "../component/content/Content"
 
 export default function Home() {
   return (
-    <div class='flex font-inter min-h-screen'>
+    <div className='flex font-inter min-h-screen'>
         <Sidebar />
         <Content />
     </div>
