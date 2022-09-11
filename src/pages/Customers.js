@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import cross from '../assets/cross.svg';
 import profile from '../assets/profile.png';
 
+//components
+import Button from '../button/Button';
+
 export default function Customers() {
   return (
     <div>
-        <button className='py-3.5 px-6 rounded-md flex items-center bg-lightGreen text-white'>
-            <span className='mr-2 font-semibold text-lg'>Add Customer</span>
-            <img src={cross} alt="cross" />
-        </button>
+        <Button pathname='/' text='Add Customer' icon={cross} color='#fff' bgColor='#3AB44A' />
         <div className='customer-table mt-10'>
             <div>
                 <table className='w-full border-separate border-spacing-0'>
@@ -37,7 +37,7 @@ export default function Customers() {
                             <td>Apr 02, 2022</td>
                             <td>
                                 <div className='flex flex-1 justify-end items-center'>
-                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md border-[1px] border-lighterGrey'>Shipments</Link>
+                                    <Link to='/shipment' className='py-3.5 px-5 text-sm rounded-md border-[1px] border-lighterGrey'>Shipments</Link>
                                     <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>Edit</Link>
                                 </div>
                             </td>     
