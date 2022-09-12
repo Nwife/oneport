@@ -45,3 +45,12 @@ table tbody tr:last-child td:first-child{
 table tbody tr:last-child td:last-child{
     border-bottom-right-radius: 10px;
 }
+.input_container{
+    position: relative;
+}
+.input_container img{
+    position: absolute;
+    top: 42%;
+    left: 15px;
+    transform: translateY(-50%);
+}

@@ -14,7 +14,7 @@ export default function Button({text, icon, pathname, color, bgColor}) {
             }}
             onClick={() => navigate(`${pathname}`)}
         >
-            <span className='font-medium text-lg'>{text}</span>
+            <span className='font-medium text-base'>{text}</span>
             {<img src={icon} className='ml-2' alt="" /> || ''}
         </button>
     </>
