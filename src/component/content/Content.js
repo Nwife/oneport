@@ -8,9 +8,9 @@ import ShipmentDetails from '../../pages/ShipmentDetails';
 
 export default function Content() {
   return (
-    <div className="flex-1">
+    <div className="flex-1 overflow-hidden">
         <TopNav />
-        <div className='py-[70px] px-[70px]'>
+        <div className='py-[70px] px-[40px] md:px-[70px]'>
           <Routes>
             <Route index element={<Customers />} />
             <Route path='/shipment' element={<Shipments />} />

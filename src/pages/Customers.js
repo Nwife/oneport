@@ -12,8 +12,8 @@ export default function Customers() {
     <div>
         <Button pathname='/' text='Add Customer' icon={cross} color='#fff' bgColor='#3AB44A' />
         <div className='customer-table mt-10'>
-            <div>
-                <table className='w-full border-separate border-spacing-0'>
+            <div className='overflow-x-auto'>
+                <table className='w-full border-separate border-spacing-0 min-w-[1000px]'>
                     <thead className='mb-[11px]'>
                         <tr>
                             <td className='text-lightGrey text-xs font-medium'>FIRST NAME</td>
