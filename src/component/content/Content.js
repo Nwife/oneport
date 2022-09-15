@@ -13,8 +13,8 @@ export default function Content() {
         <div className='py-[70px] px-[40px] md:px-[70px]'>
           <Routes>
             <Route index element={<Customers />} />
-            <Route path='/shipment' element={<Shipments />} />
-            <Route path='/shipment/:id' element={<ShipmentDetails />} />
+            <Route path='/shipment/:id' element={<Shipments />} />
+            <Route path='/shipmentdetail' element={<ShipmentDetails />} />
           </Routes>
         </div>
     </div>
