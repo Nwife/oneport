@@ -14,7 +14,7 @@ export default function Content() {
           <Routes>
             <Route index element={<Customers />} />
             <Route path='/shipment/:id' element={<Shipments />} />
-            <Route path='/shipmentdetail' element={<ShipmentDetails />} />
+            <Route path='/shipmentdetail/:id' element={<ShipmentDetails />} />
           </Routes>
         </div>
     </div>

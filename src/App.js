@@ -2,15 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 //components
-import Home from './pages/Home';
+import Sidebar from './component/sidebar/Sidebar';
+import Content from './component/content/Content';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App flex font-inter min-h-screen">
       <BrowserRouter>
-        <Routes>
-          <Route path='/*' element={<Home />} />  
-        </Routes>
+        <Sidebar />
+        <Content />
       </BrowserRouter>
     </div>
   );

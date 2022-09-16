@@ -46,7 +46,7 @@ export default function ShipmentTable({ data }) {
                     <td>588393926</td>
                     <td>
                         <div className='flex flex-1 justify-end items-center'>
-                            <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>View Details</Link>
+                            <Link to={`/shipmentdetail/${ship._id}`} className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>View Details</Link>
                         </div>
                     </td>     
                 </tr>
