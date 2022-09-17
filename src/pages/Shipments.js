@@ -57,6 +57,8 @@ export default function Shipments() {
         </div>
       </div>
 
+        <div className='mt-10 font-medium text-center text-lightGreen'>{shipment.loading && <p>loading...</p>}</div>
+        <div className='mt-10 font-medium text-center text-red-400'>{shipment.error && <p>{shipment.error}</p>}</div>
       <ShipmentTable data={shipment.shipments} />
       
     </div>
