@@ -1,6 +1,3 @@
-import React from 'react'
-import Button from '../../button/Button'
-
 //icon
 import uploads from '../../assets/upload.svg';
 // import files from '../../assets/file.svg';
@@ -8,10 +5,9 @@ import uploads from '../../assets/upload.svg';
 
 //components
 import UploadedItem from '../uploadeditem/UploadedItem';
+import Button from '../../button/Button'
 
-export default function DocUpload() {
-//   const [uploadtext, setUploadText]= React.useState(true)
-
+export default function DocUpload({ handleOpenModal }) {
   return (
     <div>
         {/* navigation */}
@@ -37,7 +33,7 @@ export default function DocUpload() {
             <div><p className='text-lightGrey font-semibold mb-7 sm:mb-0'>Uploaded Documents</p></div>
             <div className='flex items-center gap-x-3'>
                 <Button onClick={() => console.log} border='1px solid #D1D5DB' text='Request Document' icon='' pathname='' color='#374151' bgColor='transparent' />
-                <div onClick={() => console.log('ifee')}>
+                <div onClick={handleOpenModal}>
                     <Button text='Upload Document' icon={uploads} pathname='' color='#fff' bgColor='#3AB44A' />
                 </div>
                 {/* <button className=' flex items-center rounded-md p-3.5 font-bold text-base text-white bg-main-green gap-x-2 '
@@ -51,10 +47,10 @@ export default function DocUpload() {
             </button> */}
             </div>
         </div>
-
         {/*Uploaded Items */}
         <UploadedItem by='you' />
         <UploadedItem by='admin' />
+
     </div>
   )
 }
