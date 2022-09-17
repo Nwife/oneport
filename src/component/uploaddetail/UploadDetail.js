@@ -5,19 +5,19 @@ import files from "../../assets/file.svg";
 import deletes from "../../assets/delete.svg";
 
 export default function UploadDetail() {
-  const [check] = React.useState(false);
+  const [check, setCheck] = React.useState(true);
 
   return (
     <div className="flex justify-between items-center border  p-4 rounded-md bg-#FAFFFB">
       {check ? (
-        <div className=" ">
+        <div onClick={() => setCheck(false)} className="cursor-pointer">
           {/* image */}
           <div className="block mx-auto w-fit mb-3"><img src={files} alt=""></img></div>
           <p className="text-base font-normal text-center">Click to upload a file or drag and drop</p>
           <p className="text-sm font-normal text-center"> PNG, JPG, , GIF upto 5MB</p>
         </div>
         ) : (
-        <div className=" flex items-center gap-x-5    ">
+        <div onClick={() => setCheck(true)} className=" flex items-center gap-x-5 cursor-pointer">
           {/* image */}
           <div><img src={files} alt=""></img></div>
           {/* words */}
