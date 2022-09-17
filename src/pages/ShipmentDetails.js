@@ -4,6 +4,9 @@ import curly from '../assets/curly.svg';
 import link from '../assets/link.svg';
 import exports from '../assets/export.svg';
 
+//components
+import DocUpload from '../component/docupload/DocUpload';
+
 
 export default function ShipmentDetails() {
   return (
@@ -47,7 +50,9 @@ export default function ShipmentDetails() {
           </div>
         </div>
       </div>
-      
+
+      <DocUpload />
+
     </div>
   )
 }
