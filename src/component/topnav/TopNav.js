@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
 //icons & images
 import bell from '../../assets/notification.svg';
@@ -6,9 +7,13 @@ import avatar from '../../assets/avatar.png';
 import caret from '../../assets/caret.svg';
 
 export default function TopNav() {
+  const { pathname } = useLocation()
+  console.log('pathname>>>', pathname)
   return (
     <div className='px-[40px] md:px-[70px] py-6 flex items-center justify-between border-b-[1px]'>
-        <h1 className='text-[22px] md:text-[28px] font-semibold'>Customers</h1>
+        <h1 className='text-[22px] md:text-[28px] font-semibold'>
+          {pathname.includes('shipment') ? 'Shipments' : 'Customers'}
+        </h1>
         <div className='flex items-center'>
             <img src={bell} alt="bell" />
             <div className='flex items-center space-x-1 ml-4 md:ml-12'>
