@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 //icons
 import back from '../assets/back.svg';
@@ -15,6 +15,7 @@ import DocUpload from '../component/docupload/DocUpload';
 
 export default function ShipmentDetails() {
   const location = useLocation()
+  const navigate = useNavigate()
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -28,7 +29,7 @@ export default function ShipmentDetails() {
   return (
     <div>
       <div className=" flex-col sm:flex sm:flex-row  justify-between items-center mb-4">
-        <div className=' flex items-center gap-x-7 mb-4 sm:mb-0'>
+        <div onClick={() => navigate(-1)} className=' flex items-center gap-x-7 mb-4 sm:mb-0 cursor-pointer'>
             <img src={back} alt=''></img>
             <p className='text-xl sm:text-2xl font-semibold'>Shipments</p>
         </div>

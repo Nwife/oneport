@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 //icons
 import back from '../assets/back.svg';
@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Shipments() {
   const location = useLocation()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const shipment = useSelector(state => state.shipment)
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function Shipments() {
   
   return (
     <div>
-      <div><img className='mb-5' src={back} alt="" /></div>
+      <div><img onClick={() => navigate(-1)} className='mb-5 cursor-pointer' src={back} alt="" /></div>
 
       <div className='flex flex-col md:flex-row space-y-5 justify-between bg-lightestGrey py-7 px-[26px] rounded-md border-[1px] border-grey w-auto md:max-w-[647px] '>
         <div className='flex flex-col md:flex-row md:space-x-5'>
