@@ -1,28 +1,32 @@
+import { useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
 //icons
-// import link from '../assets/link.svg';
 import back from '../assets/back.svg';
 import search from '../assets/search.svg';
 import cross from '../assets/cross.svg';
 import caret from '../assets/caret.svg'
-// import imports from '../assets/import.svg';
-// import exports from '../assets/export.svg';
-import profile from '../assets/shipmentprofile.png'
 
 //hooks
-import { useFetch } from '../hooks/useFetch';
+// import { useFetch } from '../hooks/useFetch';
 
 //components
 import Button from '../component/button/Button';
 import ShipmentTable from '../component/shipmenttable/ShipmentTable';
 
-export default function Shipments() {
-  const { id } = useParams()
-  const location = useLocation()
-  const { data, error, isPending } = useFetch(`https://demo3522726.mockable.io/get_single_customer_shipments/123456789`);
-  console.log("state>>", data)
+//redux
+import { fetchShipment } from '../features/shipmentSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
+export default function Shipments() {
+  const location = useLocation()
+  const dispatch = useDispatch()
+  const shipment = useSelector(state => state.shipment)
+
+  useEffect(() => {
+    dispatch(fetchShipment())
+  }, [])
+  
   return (
     <div>
       <div><img className='mb-5' src={back} alt="" /></div>
@@ -53,7 +57,7 @@ export default function Shipments() {
         </div>
       </div>
 
-      <ShipmentTable data={data} />
+      <ShipmentTable data={shipment.shipments} />
       
     </div>
   )

@@ -21,12 +21,12 @@ const customerSlice = createSlice({
         })
         builder.addCase(fetchCustomers.fulfilled, (state, action) => {
             state.loading = false
-            state.users = action.payload
+            state.customers = action.payload
             state.error = ''
         })
         builder.addCase(fetchCustomers.rejected, (state, action) => {
             state.loading = false
-            state.users = []
+            state.customers = []
             state.error = action.error.message
         })
     }
