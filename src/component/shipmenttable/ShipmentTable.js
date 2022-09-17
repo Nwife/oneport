@@ -27,25 +27,25 @@ export default function ShipmentTable({ data }) {
                 <tr key={ship._id}>
                     <td>
                         <div className="name flex items-center space-x-3 py-[20px]">
-                            <img className='ml-[26px]' src={exports} alt="profile" />
+                            <img className='ml-[26px]' src={ship.shipping_type === 'import' ? imports : exports} alt="profile" />
                             <p>{ship.shipping_type.charAt(0).toUpperCase() + ship.shipping_type.slice(1)}</p>
                         </div> 
                     </td>
-                    <td>
-                      <p>{ship.origin_port_city ? ship.origin_port_city : <p>null</p> }</p>
-                      <p className='text-lightGrey'>Lagos, Nigeria</p>
+                    <td className='max-w-[150px]'>
+                      {ship.shipping_type === 'import' ? ship.delivery_location ? <p>{ship.delivery_location}</p> : <p>null</p> : ship.pickup_location ? <p>{ship.pickup_location}</p> : <p>null</p> }
+                      <p className='text-lightGrey'>{ship.state ? ship.state : <span>null</span>}</p>
                     </td>
                     <td>
                       <div><img src={link} alt="" /></div>
                     </td>
-                    <td>
-                      <p>Airlington</p>
-                      <p className='text-lightGrey'>VA, USA</p>
+                    <td className='w-[110px]'>
+                      {ship.shipping_type === 'import' ? ship.origin_port_code ? <p>{ship.origin_port_code}</p> : <p>null</p> : ship.destination_port_code ? <p>{ship.destination_port_code}</p> : <p>null</p> }
+                      <p className='text-lightGrey max-w-[150px]'>{ship.shipping_type === 'import' ? ship.origin_port_country ? ship.origin_port_country : <span>null</span> : ship.destination_port_country ? ship.destination_port_country : <span>null</span>}</p>
                     </td>
-                    <td>Apr 02, 2022</td>
-                    <td>588393926</td>
+                    <td>{ship.createdAt.slice(0, 10)}</td>
+                    <td className='w-[150px]'><p className='max-w-[50px]'>{ship._id}</p></td>
                     <td>
-                        <div className='flex flex-1 justify-end items-center'>
+                        <div className='flex flex-1 justify-end items-center min-w-[230px]'>
                             <Link to={`/shipmentdetail/${ship._id}`} className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>View Details</Link>
                         </div>
                     </td>     
