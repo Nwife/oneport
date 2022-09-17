@@ -6,7 +6,7 @@ import imports from '../../assets/import.svg';
 import exports from '../../assets/export.svg';
 
 //hooks
-import { useFetch } from '../../hooks/useFetch';
+// import { useFetch } from '../../hooks/useFetch';
 
 export default function ShipmentTable({ data }) {
   return (
@@ -14,15 +14,11 @@ export default function ShipmentTable({ data }) {
       <table className="w-full min-w-[1000px]">
         <thead className="mb-[11px]">
           <tr>
-            <td className="text-lightGrey text-xs font-medium">
-              SHIPMENT TYPE
-            </td>
+            <td className="text-lightGrey text-xs font-medium">SHIPMENT TYPE</td>
             <td className="text-lightGrey text-xs font-medium">ORIGIN</td>
             <td className="text-white text-xs font-medium">LINK</td>
             <td className="text-lightGrey text-xs font-medium">DESTINATION</td>
-            <td className="text-lightGrey text-xs font-medium">
-              SHIPMENT DATE
-            </td>
+            <td className="text-lightGrey text-xs font-medium">SHIPMENT DATE</td>
             <td className="text-lightGrey text-xs font-medium">SHIPPING ID</td>
           </tr>
         </thead>
@@ -37,7 +33,7 @@ export default function ShipmentTable({ data }) {
                       src={ship.shipping_type === "import" ? imports : exports}
                       alt="profile"
                     />
-                    <p className='font-medium'>
+                    <p className='font-medium pr-[10px]'>
                       {ship.shipping_type.charAt(0).toUpperCase() +
                         ship.shipping_type.slice(1)}
                     </p>
