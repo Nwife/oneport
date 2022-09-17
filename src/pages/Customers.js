@@ -5,7 +5,7 @@ import cross from '../assets/cross.svg';
 import profile from '../assets/profile.png';
 
 //components
-import Button from '../button/Button';
+import Button from '../component/button/Button';
 import CustomerTable from '../component/customertable/CustomerTable';
 
 //hooks

@@ -5,7 +5,7 @@ import uploads from '../../assets/upload.svg';
 
 //components
 import UploadedItem from '../uploadeditem/UploadedItem';
-import Button from '../../button/Button'
+import Button from '../button/Button'
 
 export default function DocUpload({ handleOpenModal }) {
   return (
@@ -32,7 +32,7 @@ export default function DocUpload({ handleOpenModal }) {
         <div className='flex-col sm:flex-row sm:flex justify-between items-center mb-7'>
             <div><p className='text-lightGrey font-semibold mb-7 sm:mb-0'>Uploaded Documents</p></div>
             <div className='flex items-center gap-x-3'>
-                <Button onClick={() => console.log} border='1px solid #D1D5DB' text='Request Document' icon='' pathname='' color='#374151' bgColor='transparent' />
+                <Button border='1px solid #D1D5DB' text='Request Document' icon='' pathname='' color='#374151' bgColor='transparent' />
                 <div onClick={handleOpenModal}>
                     <Button text='Upload Document' icon={uploads} pathname='' color='#fff' bgColor='#3AB44A' />
                 </div>

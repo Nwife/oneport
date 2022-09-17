@@ -14,7 +14,7 @@ import profile from '../assets/shipmentprofile.png'
 import { useFetch } from '../hooks/useFetch';
 
 //components
-import Button from '../button/Button';
+import Button from '../component/button/Button';
 import ShipmentTable from '../component/shipmenttable/ShipmentTable';
 
 export default function Shipments() {
