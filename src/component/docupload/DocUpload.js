@@ -10,47 +10,52 @@ import Button from '../button/Button'
 export default function DocUpload({ handleOpenModal }) {
   return (
     <div>
-        {/* navigation */}
-        <div className='overflow-x-auto'>
-            <div className=' flex items-center  mb-6 w-full min-w-[620px] '>
-                <div className='py-2 px-6 border-b-2 border-lightGreen'>
-                    <p className='font-semibold'>Documents</p>
-                </div>
-                <div className='py-2 px-6'>
-                    <p className='font-semibold'>Cargo Details</p>
-                </div>
-                <div className='py-2 px-6'>
-                    <p className='font-semibold'>Additional Services</p>
-                </div>
-                <div className='py-2 px-6'>
-                    <p className='font-semibold'>Rates</p>
-                </div>  
-            </div>
+      {/* navigation */}
+      <div className="overflow-x-auto">
+        <div className=" flex items-center  mb-6 w-full min-w-[620px] ">
+          <div className="py-2 px-6 border-b-2 border-lightGreen">
+            <p className="font-semibold">Documents</p>
+          </div>
+          <div className="py-2 px-6">
+            <p className="font-semibold">Cargo Details</p>
+          </div>
+          <div className="py-2 px-6">
+            <p className="font-semibold">Additional Services</p>
+          </div>
+          <div className="py-2 px-6">
+            <p className="font-semibold">Rates</p>
+          </div>
         </div>
+      </div>
 
-        {/* upload documents */}
-        <div className='flex-col sm:flex-row sm:flex justify-between items-center mb-7'>
-            <div><p className='text-lightGrey font-semibold mb-7 sm:mb-0'>Uploaded Documents</p></div>
-            <div className='flex items-center gap-x-3'>
-                <Button border='1px solid #D1D5DB' text='Request Document' icon='' pathname='' color='#374151' bgColor='transparent' />
-                <div onClick={handleOpenModal}>
-                    <Button text='Upload Document' icon={uploads} pathname='' color='#fff' bgColor='#3AB44A' />
-                </div>
-                {/* <button className=' flex items-center rounded-md p-3.5 font-bold text-base text-white bg-main-green gap-x-2 '
-                onClick={()=>{
-                    dispatch(ShowModal(true))
-                    setFixed(true)
-                }}
-                >
-                    <p>Upload Document</p>
-                    <img src={upload} alt=''></img>
-            </button> */}
-            </div>
+      {/* upload documents */}
+      <div className="flex-col sm:flex-row sm:flex justify-between items-center mb-7">
+        <div>
+          <p className="text-lightGrey font-semibold mb-7 sm:mb-0">
+            Uploaded Documents
+          </p>
         </div>
-        {/*Uploaded Items */}
-        <UploadedItem by='you' />
-        <UploadedItem by='admin' />
-
+        <div className="flex items-center gap-x-3">
+          <Button
+            border="1px solid #D1D5DB"
+            text="Request Document"
+            icon=""
+            pathname=""
+            color="#374151"
+            bgColor="transparent"
+          />
+          <button
+            className="py-3.5 px-6 rounded-md flex items-center text-white outline-none bg-lightGreen "
+            onClick={handleOpenModal}
+          >
+            <span className="font-medium text-base">Upload Document</span>
+            <img src={uploads} className="ml-2" alt="" />
+          </button>
+        </div>
+      </div>
+      {/*Uploaded Items */}
+      <UploadedItem by="you" />
+      <UploadedItem by="admin" />
     </div>
-  )
+  );
 }

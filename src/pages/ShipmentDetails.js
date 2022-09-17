@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 //icons
 import back from '../assets/back.svg';
 import curly from '../assets/curly.svg';
 import link from '../assets/link.svg';
+import imports from '../assets/import.svg';
 import exports from '../assets/export.svg';
 
 //components
@@ -11,6 +14,7 @@ import DocUpload from '../component/docupload/DocUpload';
 
 
 export default function ShipmentDetails() {
+  const location = useLocation()
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -19,6 +23,7 @@ export default function ShipmentDetails() {
   const handleCloseModal = () => {
     setShowModal(false)
   }
+  console.log("loc>>", location.state)
 
   return (
     <div>
@@ -37,26 +42,26 @@ export default function ShipmentDetails() {
         <div className='mb-12 w-full min-w-[620px]'>
           <div className=' px-10 flex justify-between rounded-t-xl items-center h-24 bg-lightGreen '>
             <div className='flex items-center gap-x-2'>
-                <img src={exports} alt=''></img>
-                <p className='text-white font-medium text-xl'>Export</p>
+                <img src={location.state.type === 'Import' ? imports : exports} alt=''></img>
+                <p className='text-white font-medium text-xl'>{location.state.type}</p>
             </div>
-            <div><p className='text-white text-lg'>Apr 02, 2022</p></div>
+            <div><p className='text-white text-lg'>{location.state.date}</p></div>
             <div>
                 <p className='text-white font-medium text-base opacity-70'>Shipment ID</p>
-                <p className='text-white text-lg'>489395758</p>
+                <p className='text-white text-lg'>{location.state.id}</p>
             </div>
           </div>
           <div style={{ backgroundImage: `url(${curly})`}} className='bg-[#F0FDF4] rounded-b-xl px-10 py-8 flex gap-x-10 items-center h-40  bg-exp-img bg-cover bg-no-repeat bg-center'>
             <div>
-                <p className='font-semibold text-xs mb-6'>PORT OF DISCHARGE</p>
-                <p className='font-semibold  text-2xl mb-2'>NGAPP</p>
+                <p className='font-semibold text-xs mb-6'>{location.state.type === 'Import' ? 'DELIVERY LOCATION' : 'PORT OF DISCHARGE'}</p>
+                <p className='font-semibold  text-2xl mb-2'>{location.state.type === 'Import' ? location.state.deliveryloc : location.state.destcode}</p>
                 <p className='font-medium text-sm'>Lagos, Nigeria</p>
             </div>
             <div><img src={link} alt=''></img></div>
             <div>
-                <p className='font-semibold text-xs mb-6'>DELIVERY LOCATION</p>
-                <p className='font-semibold  text-2xl mb-2'>Arlington</p>
-                <p className='font-medium text-sm'>VA, USA</p>
+                <p className='font-semibold text-xs mb-6'>{location.state.type === 'Import' ? 'RECEIVING PORT' : 'DELIVERY LOCATION' }</p>
+                <p className='font-semibold  text-2xl mb-2'>{location.state.type === 'Import' ? location.state.originport : location.state.pickuploc}</p>
+                <p className='font-medium text-sm'>{location.state.type === 'Import' ? location.state.originportcountry : location.state.state}</p>
             </div>
           </div>
         </div>

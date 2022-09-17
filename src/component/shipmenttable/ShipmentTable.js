@@ -37,13 +37,13 @@ export default function ShipmentTable({ data }) {
                       src={ship.shipping_type === "import" ? imports : exports}
                       alt="profile"
                     />
-                    <p>
+                    <p className='font-medium'>
                       {ship.shipping_type.charAt(0).toUpperCase() +
                         ship.shipping_type.slice(1)}
                     </p>
                   </div>
                 </td>
-                <td className="max-w-[150px]">
+                <td className="max-w-[150px] font-medium">
                   {ship.shipping_type === "import" ? (
                     ship.delivery_location ? (
                       <p>{ship.delivery_location}</p>
@@ -64,7 +64,7 @@ export default function ShipmentTable({ data }) {
                     <img src={link} alt="" />
                   </div>
                 </td>
-                <td className="w-[110px]">
+                <td className="w-[110px] font-medium">
                   {ship.shipping_type === "import" ? (
                     ship.origin_port_code ? (
                       <p>{ship.origin_port_code}</p>
@@ -90,8 +90,8 @@ export default function ShipmentTable({ data }) {
                     )}
                   </p>
                 </td>
-                <td>{ship.createdAt.slice(0, 10)}</td>
-                <td className="w-[150px]">
+                <td className='font-medium'>{ship.createdAt.slice(0, 10)}</td>
+                <td className="w-[150px] font-medium">
                   <p className="max-w-[50px]">{ship._id}</p>
                 </td>
                 <td>
@@ -99,15 +99,15 @@ export default function ShipmentTable({ data }) {
                     <Link
                       to={`/shipmentdetail/${ship._id}`}
                       state={{
-                        type: ship.shipping_type,
+                        type: ship.shipping_type.charAt(0).toUpperCase() + ship.shipping_type.slice(1),
                         date: ship.createdAt.slice(0, 10),
                         originport: ship.origin_port_code,
                         deliveryloc: ship.delivery_location,
                         state: ship.state,
                         originportcountry: ship.origin_port_country,
                         destcode: ship.destination_port_code,
-                        destcountry: ship.destination_port_country,
-                        pickuploc: ship.pickup_location
+                        pickuploc: ship.pickup_location,
+                        id: ship._id
                       }}
                       className="py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white"
                     >
