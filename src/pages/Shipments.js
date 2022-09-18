@@ -3,9 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 //icons
 import back from "../assets/back.svg";
-import search from "../assets/search.svg";
-import cross from "../assets/cross.svg";
-import caret from "../assets/caret.svg";
 
 //hooks
 // import { useFetch } from '../hooks/useFetch';
@@ -22,24 +19,7 @@ export default function Shipments() {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const shipment = useSelector((state) => state.shipment);
-
-  const [input, setInput] = useState('');
-//   const [searchTerm] = useState(["origin_port_city", "origin_port_code", "origin_port_country", "destination_port_code", "destination_port_city", "destination_port_country", "_id"]);
-
-//   function search(items) {
-//     return items.filter((item) => {
-//         return searchTerm.some((newItem) => {
-//             return (
-//                 item[newItem]
-//                     .toString()
-//                     .toLowerCase()
-//                     .indexOf(input.toLowerCase()) > -1
-//             );
-//         });
-//     });
-// }
 
   useEffect(() => {
     dispatch(fetchShipment());
@@ -72,7 +52,7 @@ export default function Shipments() {
           </div>
         </div>
         <div>
-          <Button text="Edit" pathname="" color="#fff" bgColor="#3AB44A" />
+          <Button text="Edit" pathname="" disabled={true} color="#fff" bgColor="#3AB44A" />
         </div>
       </div>
 

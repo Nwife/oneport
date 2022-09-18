@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function Button({text, icon, pathname, color, bgColor, border}) {
+export default function Button({text, icon, pathname, color, bgColor, border, disabled}) {
   const navigate = useNavigate();
 
   return (
@@ -14,6 +14,7 @@ export default function Button({text, icon, pathname, color, bgColor, border}) {
                 border: `${border}`
             }}
             onClick={() => navigate(`${pathname}`)}
+            disabled= {disabled}
         >
             <span className='font-medium text-base'>{text}</span>
             {icon && <img src={icon} className='ml-2' alt="" />}
