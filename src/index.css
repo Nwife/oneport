@@ -57,9 +57,9 @@ table tbody tr:last-child td:last-child{
 .shipment-button button{
     width: fit-content;
 }
-/* @media(max-width: 1390px){
-    .shipment-button{
-        flex-direction: column;
-        gap: 25px;
+@media(max-width: 767px){
+    .mobile .sidebar{
+        display: unset;
+        border: 0;
     }
-} */
+}
