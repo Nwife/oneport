@@ -34,11 +34,11 @@ export default function TopNav() {
             </div>
             <div className='mobile'>
               {toggleMenu
-                ? <div className='md:hidden ml-3' onClick={() => setToggleMenu(false)}><img src={menuclose} alt="" /></div>
-                : <div className='md:hidden ml-3' onClick={() => setToggleMenu(true)}><img src={menu} alt="" /></div>
+                ? <div className='md:hidden ml-3 cursor-pointer' onClick={() => setToggleMenu(false)}><img src={menuclose} alt="" /></div>
+                : <div className='md:hidden ml-3 cursor-pointer' onClick={() => setToggleMenu(true)}><img src={menu} alt="" /></div>
               }
               {toggleMenu && (
-                <div className='mobilemenu absolute top-[90px] w-auto right-0 bg-white p-12 shadow-lg z-10'><Sidebar handleToggleMenu={handleToggleMenu} /></div>
+                <div className='mobilemenu absolute top-[87px] w-auto right-0 bg-white p-12 shadow-lg z-10'><Sidebar handleToggleMenu={handleToggleMenu} /></div>
               )}
             </div>
         </div> 
