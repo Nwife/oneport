@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //icons
 import link from '../../assets/link.svg';
@@ -15,55 +15,56 @@ import Button from '../button/Button';
 //hooks
 // import { useFetch } from '../../hooks/useFetch';
 
-export default function ShipmentTable({ data }) {
+export default function ShipmentTable({ shipdata }) {
   const [input, setInput] = useState('');
+  const [shipment, setShipment] = useState(shipdata)
 
   const [searchTerm] = useState([
     "origin_port_city",
     "origin_port_code",
     "origin_port_country",
+    "delivery_location",
     "destination_port_code",
     "destination_port_city",
     "destination_port_country",
     "_id",
   ]);
 
-  const [shipment, setShipment] = useState(data)
-
   //seach functionality for port origin code, port origin
-  // function search(items) {
-  //   return items.filter((item) => {
-  //     return searchTerm.some((newItem) => {
-  //       if(item[newItem]){
-  //         return (
-  //           item[newItem]
-  //               .toString()
-  //               .toLowerCase()
-  //               .indexOf(input.toLowerCase()) > -1
-  //         );
-  //       }    
-  //     });
-  //   });
-  // }
+  function searches(e) {
+    const matchedShip = shipdata.filter((item) => {
+      return searchTerm.some((newItem) => {
+        if(item[newItem]){
+          return (
+            item[newItem]
+                .toString()
+                .toLowerCase()
+                .indexOf(input.toLowerCase()) > -1
+          );
+        }    
+      });
+    });
+    setShipment(matchedShip)
+    setInput(e.target.value)
+  }
 
   const search = (e) => {
-    const matchedUsers = data.filter((ship) => {
-      return `${ship.origin_port_city} ${ship.origin_port_code} ${ship.origin_port_country} ${ship.destination_port_code} ${ship.destination_port_city} ${ship.destination_port_country} ${ship._id} ${ship.delivery_location}}`
+    // if(input === ''){
+    //   setShipment(shipdata)
+    //   return
+    // }
+    const matchedShipment = shipdata.filter((ship) => {
+      return `${ship.origin_port_city} ${ship.origin_port_code} ${ship.origin_port_country} ${ship.destination_port_code} ${ship.destination_port_city} ${ship.destination_port_country} ${ship._id}`
         .toLowerCase()
         .includes(input);
     });
-    setShipment(matchedUsers)
+    setShipment(matchedShipment)
     setInput(e.target.value)
   }
  
-
-
-  // console.log('info>>>', info)
-
-
   return (
     <>
-    <div className="overflow-x-auto ">
+      <div className="overflow-x-auto ">
         <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
           <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
             <Button
@@ -99,7 +100,7 @@ export default function ShipmentTable({ data }) {
             <img src={searched} alt="search" />
           </div>
         </div>
-    </div>
+      </div>
 
     <div className="overflow-x-auto mt-10">
       <table className="w-full min-w-[1000px]">
@@ -114,7 +115,7 @@ export default function ShipmentTable({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data &&
+          {shipment &&
             shipment.map((ship) => (
               <tr key={ship._id}>
                 <td>

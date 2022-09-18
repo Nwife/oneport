@@ -43,7 +43,7 @@ export default function Shipments() {
 
   useEffect(() => {
     dispatch(fetchShipment());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -120,7 +120,7 @@ export default function Shipments() {
       <div className="mt-10 font-medium text-center text-red-400">
         {shipment.error && <p>{shipment.error}</p>}
       </div>
-      <ShipmentTable data={shipment.shipments} input={input}/>
+        {!shipment.loading && <ShipmentTable shipdata={shipment.shipments} />}
     </div>
   );
 }
