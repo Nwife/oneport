@@ -14,11 +14,15 @@ export default function ShipmentTable({ data }) {
       <table className="w-full min-w-[1000px]">
         <thead className="mb-[11px]">
           <tr>
-            <td className="text-lightGrey text-xs font-medium">SHIPMENT TYPE</td>
+            <td className="text-lightGrey text-xs font-medium">
+              SHIPMENT TYPE
+            </td>
             <td className="text-lightGrey text-xs font-medium">ORIGIN</td>
             <td className="text-white text-xs font-medium">LINK</td>
             <td className="text-lightGrey text-xs font-medium">DESTINATION</td>
-            <td className="text-lightGrey text-xs font-medium">SHIPMENT DATE</td>
+            <td className="text-lightGrey text-xs font-medium">
+              SHIPMENT DATE
+            </td>
             <td className="text-lightGrey text-xs font-medium">SHIPPING ID</td>
           </tr>
         </thead>
@@ -33,7 +37,7 @@ export default function ShipmentTable({ data }) {
                       src={ship.shipping_type === "import" ? imports : exports}
                       alt="profile"
                     />
-                    <p className='font-medium pr-[10px]'>
+                    <p className="font-medium pr-[10px]">
                       {ship.shipping_type.charAt(0).toUpperCase() +
                         ship.shipping_type.slice(1)}
                     </p>
@@ -55,7 +59,7 @@ export default function ShipmentTable({ data }) {
                     {ship.state ? ship.state : <span>null</span>}
                   </p>
                 </td>
-                <td>
+                <td className="table-portcode">
                   <div>
                     <img src={link} alt="" />
                   </div>
@@ -86,7 +90,7 @@ export default function ShipmentTable({ data }) {
                     )}
                   </p>
                 </td>
-                <td className='font-medium'>{ship.createdAt.slice(0, 10)}</td>
+                <td className="font-medium">{ship.createdAt.slice(0, 10)}</td>
                 <td className="w-[150px] font-medium">
                   <p className="max-w-[50px]">{ship._id}</p>
                 </td>
@@ -95,7 +99,9 @@ export default function ShipmentTable({ data }) {
                     <Link
                       to={`/shipmentdetail/${ship._id}`}
                       state={{
-                        type: ship.shipping_type.charAt(0).toUpperCase() + ship.shipping_type.slice(1),
+                        type:
+                          ship.shipping_type.charAt(0).toUpperCase() +
+                          ship.shipping_type.slice(1),
                         date: ship.createdAt.slice(0, 10),
                         originport: ship.origin_port_code,
                         deliveryloc: ship.delivery_location,
@@ -103,7 +109,7 @@ export default function ShipmentTable({ data }) {
                         originportcountry: ship.origin_port_country,
                         destcode: ship.destination_port_code,
                         pickuploc: ship.pickup_location,
-                        id: ship._id
+                        id: ship._id,
                       }}
                       className="py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white"
                     >

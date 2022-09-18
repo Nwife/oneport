@@ -14,14 +14,6 @@
 .botr{
     border-top-left-radius: 10px;
 }
-/* .shipment-table{
-    width: 100%;
-    min-width: 1000px;
-}
-.ship-table_wrap{
-    overflow-x: auto;
-    border: 1px solid blueviolet;
-} */
 table thead tr td{
     padding-bottom: 10px;
 }
@@ -58,6 +50,9 @@ table tbody tr:last-child td:last-child{
     top: 42%;
     left: 15px;
     transform: translateY(-50%);
+}
+.table-portcode{
+    text-align: -webkit-center;
 }
 .shipment-button button{
     width: fit-content;
