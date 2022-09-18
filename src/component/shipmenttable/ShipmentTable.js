@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 //icons
@@ -8,27 +9,42 @@ import exports from '../../assets/export.svg';
 //hooks
 // import { useFetch } from '../../hooks/useFetch';
 
-export default function ShipmentTable({ data }) {
+export default function ShipmentTable({ data, input }) {
+  const [searchTerm] = useState(["origin_port_city", "origin_port_code", "origin_port_country", "destination_port_code", "destination_port_city", "destination_port_country", "_id"]);
+
+  //seach functionality for port origin code, port origin
+  function search(items) {
+    return items.filter((item) => {
+        return searchTerm.some((newItem) => {
+          if(item[newItem]){
+            return (
+              item[newItem]
+                  .toString()
+                  .toLowerCase()
+                  .indexOf(input.toLowerCase()) > -1
+          );
+          }    
+        });
+    });
+}
+
+
   return (
     <div className="overflow-x-auto mt-10">
       <table className="w-full min-w-[1000px]">
         <thead className="mb-[11px]">
           <tr>
-            <td className="text-lightGrey text-xs font-medium">
-              SHIPMENT TYPE
-            </td>
+            <td className="text-lightGrey text-xs font-medium">SHIPMENT TYPE</td>
             <td className="text-lightGrey text-xs font-medium">ORIGIN</td>
             <td className="text-white text-xs font-medium">LINK</td>
             <td className="text-lightGrey text-xs font-medium">DESTINATION</td>
-            <td className="text-lightGrey text-xs font-medium">
-              SHIPMENT DATE
-            </td>
+            <td className="text-lightGrey text-xs font-medium">SHIPMENT DATE</td>
             <td className="text-lightGrey text-xs font-medium">SHIPPING ID</td>
           </tr>
         </thead>
         <tbody>
           {data &&
-            data.map((ship) => (
+            search(data).map((ship) => (
               <tr key={ship._id}>
                 <td>
                   <div className="name flex items-center space-x-3 py-[20px]">

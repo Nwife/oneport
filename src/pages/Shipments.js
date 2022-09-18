@@ -1,67 +1,126 @@
-import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 //icons
-import back from '../assets/back.svg';
-import search from '../assets/search.svg';
-import cross from '../assets/cross.svg';
-import caret from '../assets/caret.svg'
+import back from "../assets/back.svg";
+import search from "../assets/search.svg";
+import cross from "../assets/cross.svg";
+import caret from "../assets/caret.svg";
 
 //hooks
 // import { useFetch } from '../hooks/useFetch';
 
 //components
-import Button from '../component/button/Button';
-import ShipmentTable from '../component/shipmenttable/ShipmentTable';
+import Button from "../component/button/Button";
+import ShipmentTable from "../component/shipmenttable/ShipmentTable";
 
 //redux
-import { fetchShipment } from '../features/shipmentSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { fetchShipment } from "../features/shipmentSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Shipments() {
-  const location = useLocation()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const shipment = useSelector(state => state.shipment)
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const shipment = useSelector((state) => state.shipment);
+
+  const [input, setInput] = useState('');
+//   const [searchTerm] = useState(["origin_port_city", "origin_port_code", "origin_port_country", "destination_port_code", "destination_port_city", "destination_port_country", "_id"]);
+
+//   function search(items) {
+//     return items.filter((item) => {
+//         return searchTerm.some((newItem) => {
+//             return (
+//                 item[newItem]
+//                     .toString()
+//                     .toLowerCase()
+//                     .indexOf(input.toLowerCase()) > -1
+//             );
+//         });
+//     });
+// }
 
   useEffect(() => {
-    dispatch(fetchShipment())
-  }, [])
-  
+    dispatch(fetchShipment());
+  }, []);
+
   return (
     <div>
-      <div><img onClick={() => navigate(-1)} className='mb-5 cursor-pointer' src={back} alt="" /></div>
-
-      <div className='flex flex-col md:flex-row space-y-5 justify-between bg-lightestGrey py-7 px-[26px] rounded-md border-[1px] border-grey w-auto md:max-w-[647px] '>
-        <div className='flex flex-col md:flex-row md:space-x-5'>
-          <img  className='w-20 h-20 rounded-full' src={location.state.avatar} alt="profile" />
-          <div>
-            <p className='font-medium text-lg'>{location.state.fname} {location.state.lname} </p>
-            <p className='text-lg'>deanna.curtis@example.com</p>
-            <p className='text-lg'>{location.state.phone}</p>
-          </div>
-        </div>
-        <div><Button text='Edit' pathname='' color='#fff' bgColor='#3AB44A' /></div>
+      <div>
+        <img
+          onClick={() => navigate(-1)}
+          className="mb-5 cursor-pointer"
+          src={back}
+          alt=""
+        />
       </div>
 
-      <div className='overflow-x-auto '>
-        <div className='flex justify-between mt-10 shipment-button min-w-[1000px]'>
-          <div className='flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] '>
-            <Button text='Add New Shipment' pathname='/' color='#fff' bgColor='#3AB44A' icon={cross} />
-            <Button text='Shipment Type' pathname='' color='#374151' bgColor=' #F3F4F6' icon={caret} />
-            <Button text='Shipment Date' pathname='' color='#374151' bgColor='#F3F4F6' icon={caret} />
+      <div className="flex flex-col md:flex-row space-y-5 justify-between bg-lightestGrey py-7 px-[26px] rounded-md border-[1px] border-grey w-auto md:max-w-[647px] ">
+        <div className="flex flex-col md:flex-row md:space-x-5">
+          <img
+            className="w-20 h-20 rounded-full"
+            src={location.state.avatar}
+            alt="profile"
+          />
+          <div>
+            <p className="font-medium text-lg">
+              {location.state.fname} {location.state.lname}{" "}
+            </p>
+            <p className="text-lg">deanna.curtis@example.com</p>
+            <p className="text-lg">{location.state.phone}</p>
+          </div>
+        </div>
+        <div>
+          <Button text="Edit" pathname="" color="#fff" bgColor="#3AB44A" />
+        </div>
+      </div>
+
+      <div className="overflow-x-auto ">
+        <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
+          <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
+            <Button
+              text="Add New Shipment"
+              pathname="/"
+              color="#fff"
+              bgColor="#3AB44A"
+              icon={cross}
+            />
+            <Button
+              text="Shipment Type"
+              pathname=""
+              color="#374151"
+              bgColor=" #F3F4F6"
+              icon={caret}
+            />
+            <Button
+              text="Shipment Date"
+              pathname=""
+              color="#374151"
+              bgColor="#F3F4F6"
+              icon={caret}
+            />
           </div>
           <div className="input_container">
-            <input type="text" className='w-72 py-2 px-3 rounded-md pl-10 border-grey border-[1px] placeholder:text-sm placeholder:text-[#9CA3AF] focus:outline-0' placeholder='search by shipment ID, Destination'/>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="w-72 py-2 px-3 rounded-md pl-10 border-grey border-[1px] placeholder:text-sm placeholder:text-[#9CA3AF] focus:outline-0"
+              placeholder="search by shipment ID, Destination"
+            />
             <img src={search} alt="search" />
           </div>
         </div>
       </div>
 
-        <div className='mt-10 font-medium text-center text-lightGreen'>{shipment.loading && <p>loading...</p>}</div>
-        <div className='mt-10 font-medium text-center text-red-400'>{shipment.error && <p>{shipment.error}</p>}</div>
-      <ShipmentTable data={shipment.shipments} />
-      
+      <div className="mt-10 font-medium text-center text-lightGreen">
+        {shipment.loading && <p>loading...</p>}
+      </div>
+      <div className="mt-10 font-medium text-center text-red-400">
+        {shipment.error && <p>{shipment.error}</p>}
+      </div>
+      <ShipmentTable data={shipment.shipments} input={input}/>
     </div>
-  )
+  );
 }
