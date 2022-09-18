@@ -76,7 +76,7 @@ export default function Shipments() {
         </div>
       </div>
 
-      <div className="overflow-x-auto ">
+      {/* <div className="overflow-x-auto ">
         <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
           <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
             <Button
@@ -112,7 +112,7 @@ export default function Shipments() {
             <img src={search} alt="search" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-10 font-medium text-center text-lightGreen">
         {shipment.loading && <p>loading...</p>}

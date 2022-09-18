@@ -5,31 +5,102 @@ import { Link, useParams } from 'react-router-dom';
 import link from '../../assets/link.svg';
 import imports from '../../assets/import.svg';
 import exports from '../../assets/export.svg';
+import cross from '../../assets/cross.svg';
+import caret from '../../assets/caret.svg';
+import searched from '../../assets/search.svg';
+
+//components
+import Button from '../button/Button';
 
 //hooks
 // import { useFetch } from '../../hooks/useFetch';
 
-export default function ShipmentTable({ data, input }) {
-  const [searchTerm] = useState(["origin_port_city", "origin_port_code", "origin_port_country", "destination_port_code", "destination_port_city", "destination_port_country", "_id"]);
+export default function ShipmentTable({ data }) {
+  const [input, setInput] = useState('');
+
+  const [searchTerm] = useState([
+    "origin_port_city",
+    "origin_port_code",
+    "origin_port_country",
+    "destination_port_code",
+    "destination_port_city",
+    "destination_port_country",
+    "_id",
+  ]);
+
+  const [shipment, setShipment] = useState(data)
 
   //seach functionality for port origin code, port origin
-  function search(items) {
-    return items.filter((item) => {
-        return searchTerm.some((newItem) => {
-          if(item[newItem]){
-            return (
-              item[newItem]
-                  .toString()
-                  .toLowerCase()
-                  .indexOf(input.toLowerCase()) > -1
-          );
-          }    
-        });
+  // function search(items) {
+  //   return items.filter((item) => {
+  //     return searchTerm.some((newItem) => {
+  //       if(item[newItem]){
+  //         return (
+  //           item[newItem]
+  //               .toString()
+  //               .toLowerCase()
+  //               .indexOf(input.toLowerCase()) > -1
+  //         );
+  //       }    
+  //     });
+  //   });
+  // }
+
+  const search = (e) => {
+    const matchedUsers = data.filter((ship) => {
+      return `${ship.origin_port_city} ${ship.origin_port_code} ${ship.origin_port_country} ${ship.destination_port_code} ${ship.destination_port_city} ${ship.destination_port_country} ${ship._id} ${ship.delivery_location}}`
+        .toLowerCase()
+        .includes(input);
     });
-}
+    setShipment(matchedUsers)
+    setInput(e.target.value)
+  }
+ 
+
+
+  // console.log('info>>>', info)
 
 
   return (
+    <>
+    <div className="overflow-x-auto ">
+        <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
+          <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
+            <Button
+              text="Add New Shipment"
+              pathname="/"
+              color="#fff"
+              bgColor="#3AB44A"
+              icon={cross}
+            />
+            <Button
+              text="Shipment Type"
+              pathname=""
+              color="#374151"
+              bgColor=" #F3F4F6"
+              icon={caret}
+            />
+            <Button
+              text="Shipment Date"
+              pathname=""
+              color="#374151"
+              bgColor="#F3F4F6"
+              icon={caret}
+            />
+          </div>
+          <div className="input_container">
+            <input
+              type="text"
+              value={input}
+              onChange={search}
+              className="w-72 py-2 px-3 rounded-md pl-10 border-grey border-[1px] placeholder:text-sm placeholder:text-[#9CA3AF] focus:outline-0"
+              placeholder="search by shipment ID, Destination"
+            />
+            <img src={searched} alt="search" />
+          </div>
+        </div>
+    </div>
+
     <div className="overflow-x-auto mt-10">
       <table className="w-full min-w-[1000px]">
         <thead className="mb-[11px]">
@@ -44,7 +115,7 @@ export default function ShipmentTable({ data, input }) {
         </thead>
         <tbody>
           {data &&
-            search(data).map((ship) => (
+            shipment.map((ship) => (
               <tr key={ship._id}>
                 <td>
                   <div className="name flex items-center space-x-3 py-[20px]">
@@ -76,7 +147,7 @@ export default function ShipmentTable({ data, input }) {
                   </p>
                 </td>
                 <td className="table-portcode">
-                  <div>
+                  <div className='flex justify-center'>
                     <img src={link} alt="" />
                   </div>
                 </td>
@@ -138,5 +209,6 @@ export default function ShipmentTable({ data, input }) {
         </tbody>
       </table>
     </div>
+    </>
   );
 }
