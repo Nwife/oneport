@@ -50,7 +50,7 @@ export default function Modal({ showModal, handleCloseModal }) {
         </div>
 
         {/* form */}
-        <form className="relative ">
+        <div className="relative ">
           <div>
             <label className="text-sm font-semibold ">
               Select Document type to upload
@@ -65,10 +65,10 @@ export default function Modal({ showModal, handleCloseModal }) {
           <UploadDetail />
 
           {/* upload button */}
-          <button className="absolute right-0 rounded-md mt-5 py-4 px-14  font-bold text-white bg-lightGreen">
+          <button onClick={handleCloseModal} className="absolute right-0 rounded-md mt-5 py-4 px-14  font-bold text-white bg-lightGreen">
             Upload
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );

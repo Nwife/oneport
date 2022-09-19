@@ -41,6 +41,7 @@ export default function DocUpload({ handleOpenModal }) {
             text="Request Document"
             icon=""
             pathname=""
+            disabled={true}
             color="#374151"
             bgColor="transparent"
           />

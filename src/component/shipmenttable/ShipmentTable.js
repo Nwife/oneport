@@ -41,6 +41,8 @@ export default function ShipmentTable({ shipdata }) {
     };
   }, [showDateFilter]);
 
+  console.log('srate>>', showDateFilter)
+
   //seach functionality for port origin code, port origin
   const search = (e) => {
     const matchedShipment = shipdata.filter((ship) => {
@@ -151,15 +153,13 @@ export default function ShipmentTable({ shipdata }) {
                 <span className="font-medium text-base">Shipment Type</span>
                 <img src={caret} className="ml-2" alt="" />
               </button>
-              <div className="relative">
-                <button
-                  className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
-                  onClick={() => setShowDateFilter(!showDateFilter)}
-                >
-                  <span className="font-medium text-base">Shipment Date</span>
-                  <img src={caret} className="ml-2" alt="" />
-                </button>
-              </div>
+              <button
+                className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
+                onClick={() => setShowDateFilter(true)}
+              >
+                <span className="font-medium text-base">Shipment Date</span>
+                <img src={caret} className="ml-2" alt="" />
+              </button>
             </div>
             <div className="input_container">
               <input
