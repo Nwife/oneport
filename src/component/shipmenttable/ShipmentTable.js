@@ -16,9 +16,14 @@ import Button from '../button/Button';
 // import { useFetch } from '../../hooks/useFetch';
 
 export default function ShipmentTable({ shipdata }) {
+  const [dateFilter, setDateFilter] = useState({
+    startDate: '',
+    endDate: ''
+  });
   const [input, setInput] = useState('');
   const [shipment, setShipment] = useState(shipdata)
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
+  const [showDateFilter, setShowDateFilter] = useState(false)
 
   //seach functionality for port origin code, port origin
   const search = (e) => {
@@ -31,10 +36,7 @@ export default function ShipmentTable({ shipdata }) {
     setInput(e.target.value)
   }
  
-  //sort functionality for import type
-  // const sortByName = () => {
-  //   setSorted()
-  // }
+  //import type filter function
   const sortByImport = () => {
 		const shipmentCopy = [...shipment];
 		shipmentCopy.sort((shipA, shipB) => {
@@ -49,9 +51,51 @@ export default function ShipmentTable({ shipdata }) {
 		setSorted({ sorted: "import", reversed: !sorted.reversed });
 	};
 
+  //date range filter
+  const dateSearch = () => {
+    const shipmentCopy = [...shipment]
+    const matchedDate = shipmentCopy.filter(row => {
+      let filterPass = true
+      const date = new Date(row.createdAt)
+      if(dateFilter.startDate){
+        filterPass = filterPass && (new Date(dateFilter.startDate) < date)
+      }
+      if (dateFilter.endDate) {
+        filterPass = filterPass && (new Date(dateFilter.endDate)  > date)
+      }
+      return filterPass
+    })
+    setShipment(matchedDate)
+
+  }
+
+  console.log('date>>', dateFilter)
+
 
   return (
     <>
+      <div className="flex flex-col space-y-3 bg-white py-3 px-3 shadow-md max-w-[173px]">
+        <input
+          type="date"
+          className="p-3 w-[150px] rounded-md bg-lighterGrey"
+          value={dateFilter.startDate}
+          placeholder='start date'
+          onChange={(e) =>
+            setDateFilter({ ...dateFilter, startDate: e.target.value })
+          }
+        />
+        <input
+          type="date"
+          className="p-3 w-[150px] rounded-md bg-lighterGrey"
+          placeholder='end date'
+          value={dateFilter.endDate}
+          onChange={(e) =>
+            setDateFilter({ ...dateFilter, endDate: e.target.value })
+          }
+        />
+        <button className='bg-lightGreen text-white rounded-md py-2.5 w-[150px]' onClick={dateSearch}>Filter</button>
+        <button className='bg-lightGreen/50 text-white rounded-md py-2.5 w-[150px]' onClick={() => setShipment(shipdata)}>Clear Filter</button>
+      </div>
       <div className="overflow-x-auto ">
         <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
           <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
@@ -72,7 +116,7 @@ export default function ShipmentTable({ shipdata }) {
             </button>
             <button
               className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
-              onClick={sortByImport}
+              // onClick={sortByImport}
             >
               <span className="font-medium text-base">Shipment Date</span>
               <img src={caret} className="ml-2" alt="" />
