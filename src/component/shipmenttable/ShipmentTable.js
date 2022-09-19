@@ -23,7 +23,7 @@ export default function ShipmentTable({ shipdata }) {
   const ref = useRef();
   const [input, setInput] = useState("");
   const [shipment, setShipment] = useState(shipdata);
-  const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
+  const [sorted, setSorted] = useState({ sorted: "import", reversed: false });
   const [showDateFilter, setShowDateFilter] = useState(false);
 
   //creating the click outside to close drop down effect
