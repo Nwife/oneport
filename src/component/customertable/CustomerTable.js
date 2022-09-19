@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import profile from '../../assets/profile.png';
 
 export default function CustomerTable({customer}) {
   return (
@@ -37,43 +36,6 @@ export default function CustomerTable({customer}) {
                             </td>     
                         </tr>
                         ))}
-                        
-                        {/* <tr>
-                            <td>
-                                <div className="name flex items-center space-x-3 py-[20px]">
-                                    <img className='ml-[26px]' src={profile} alt="profile" />
-                                    <p>Adewumi</p>
-                                </div> 
-                            </td>
-                            <td>Adebayo</td>
-                            <td>debaryour@gmail.com</td>
-                            <td>08087656543</td>
-                            <td>Apr 02, 2022</td>
-                            <td>
-                                <div className='flex flex-1 justify-end items-center'>
-                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md border-[1px] border-lighterGrey'>Shipments</Link>
-                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>Edit</Link>
-                                </div>
-                            </td>     
-                        </tr>
-                        <tr className='border-2 border-gray-100 rounded-md'>
-                            <td>
-                                <div className="name flex items-center space-x-3 py-[20px]">
-                                    <img className='ml-[26px]' src={profile} alt="profile" />
-                                    <p>Adewumi</p>
-                                </div> 
-                            </td>
-                            <td>Adebayo</td>
-                            <td>debaryour@gmail.com</td>
-                            <td>08087656543</td>
-                            <td>Apr 02, 2022</td>
-                            <td>
-                                <div className='flex flex-1 justify-end items-center'>
-                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md border-[1px] border-lighterGrey'>Shipments</Link>
-                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>Edit</Link>
-                                </div>
-                            </td>     
-                        </tr> */}
                     </tbody>
                 </table>
             </div>

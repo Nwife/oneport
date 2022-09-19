@@ -19,7 +19,6 @@ export default function TopNav() {
     setToggleMenu(false)
   }
 
-  console.log('pathname>>>', pathname)
   return (
     <div className='px-[40px] md:px-[70px] py-6 flex items-center justify-between border-b-[1px]'>
         <h1 className='text-[22px] md:text-[28px] font-semibold'>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 //icons
@@ -9,6 +9,7 @@ import back from "../assets/back.svg";
 
 //components
 import Button from "../component/button/Button";
+import LoadingSpinner from "../component/spinner/LoadingSpinner";
 import ShipmentTable from "../component/shipmenttable/ShipmentTable";
 
 //redux
@@ -47,8 +48,8 @@ export default function Shipments() {
             <p className="font-medium text-lg">
               {location.state.fname} {location.state.lname}{" "}
             </p>
-            <p className="text-lg">deanna.curtis@example.com</p>
-            <p className="text-lg">{location.state.phone}</p>
+            <p className="text-base">deanna.curtis@example.com</p>
+            <p className="text-base">{location.state.phone}</p>
           </div>
         </div>
         <div>
@@ -56,51 +57,9 @@ export default function Shipments() {
         </div>
       </div>
 
-      {/* <div className="overflow-x-auto ">
-        <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
-          <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
-            <Button
-              text="Add New Shipment"
-              pathname="/"
-              color="#fff"
-              bgColor="#3AB44A"
-              icon={cross}
-            />
-            <Button
-              text="Shipment Type"
-              pathname=""
-              color="#374151"
-              bgColor=" #F3F4F6"
-              icon={caret}
-            />
-            <Button
-              text="Shipment Date"
-              pathname=""
-              color="#374151"
-              bgColor="#F3F4F6"
-              icon={caret}
-            />
-          </div>
-          <div className="input_container">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="w-72 py-2 px-3 rounded-md pl-10 border-grey border-[1px] placeholder:text-sm placeholder:text-[#9CA3AF] focus:outline-0"
-              placeholder="search by shipment ID, Destination"
-            />
-            <img src={search} alt="search" />
-          </div>
-        </div>
-      </div> */}
-
-      <div className="mt-10 font-medium text-center text-lightGreen">
-        {shipment.loading && <p>loading...</p>}
-      </div>
-      <div className="mt-10 font-medium text-center text-red-400">
-        {shipment.error && <p>{shipment.error}</p>}
-      </div>
-        {!shipment.loading && <ShipmentTable shipdata={shipment.shipments} />}
+      <div className="mt-10 font-medium text-center text-lightGreen">{shipment.loading && <LoadingSpinner />}</div>
+      <div className="mt-10 font-medium text-center text-red-400">{shipment.error && <p>{shipment.error}</p>}</div>
+      {!shipment.loading && <ShipmentTable shipdata={shipment.shipments} />}
     </div>
   );
 }

@@ -41,7 +41,6 @@ export default function ShipmentTable({ shipdata }) {
     };
   }, [showDateFilter]);
 
-  console.log('srate>>', showDateFilter)
 
   //seach functionality for port origin code, port origin
   const search = (e) => {
@@ -93,7 +92,7 @@ export default function ShipmentTable({ shipdata }) {
         <span className="text-sm">Start date:</span>
         <input
           type="date"
-          className="p-3 w-[150px] rounded-md bg-lighterGrey"
+          className="p-3 w-[150px] rounded-md bg-lighterGrey text-sm"
           value={dateFilter.startDate}
           onChange={(e) =>
             setDateFilter({ ...dateFilter, startDate: e.target.value })
@@ -104,7 +103,7 @@ export default function ShipmentTable({ shipdata }) {
         <span className="text-sm">End date:</span>
         <input
           type="date"
-          className="p-3 w-[150px] rounded-md bg-lighterGrey"
+          className="p-3 w-[150px] text-sm rounded-md bg-lighterGrey"
           placeholder="end date"
           value={dateFilter.endDate}
           onChange={(e) =>
@@ -113,7 +112,7 @@ export default function ShipmentTable({ shipdata }) {
         />
       </label>
       <button
-        className="bg-lightGreen text-white rounded-md py-2.5 w-[150px]"
+        className="bg-lightGreen text-sm text-white rounded-md py-2.5 w-[150px]"
         onClick={() => {
           dateSearch()
           setShowDateFilter(false)
@@ -122,7 +121,7 @@ export default function ShipmentTable({ shipdata }) {
         Filter
       </button>
       <button
-        className="bg-lightGreen/70 text-white rounded-md py-2.5 w-[150px]"
+        className="bg-lightGreen/70 text-white rounded-md text-sm py-2.5 w-[150px]"
         onClick={() => setShipment(shipdata)}
       >
         Clear Filter
@@ -130,14 +129,12 @@ export default function ShipmentTable({ shipdata }) {
     </div>
   );
 
-  console.log("date>>", dateFilter);
-
   return (
     <>
       <div className="relative">
         <div className="overflow-x-auto">
           <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
-            <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
+            <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] text-md">
               <Button
                 text="Add New Shipment"
                 pathname="/"
@@ -147,17 +144,17 @@ export default function ShipmentTable({ shipdata }) {
                 disabled={true}
               />
               <button
-                className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
+                className="py-3.5 px-6 rounded-md flex items-center text-[#374151] text-md outline-none bg-[#f3f4f6]"
                 onClick={sortByImport}
               >
-                <span className="font-medium text-base">Shipment Type</span>
+                <span className="font-medium text-sm">Shipment Type</span>
                 <img src={caret} className="ml-2" alt="" />
               </button>
               <button
                 className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
                 onClick={() => setShowDateFilter(true)}
               >
-                <span className="font-medium text-base">Shipment Date</span>
+                <span className="font-medium text-sm">Shipment Date</span>
                 <img src={caret} className="ml-2" alt="" />
               </button>
             </div>
@@ -173,13 +170,13 @@ export default function ShipmentTable({ shipdata }) {
             </div>
           </div>
         </div>
-        {showDateFilter && <div ref={ref} className="absolute bottom-14 z-100 left-[450px]">
+        {showDateFilter && <div ref={ref} className="absolute bottom-14 z-100 left-[407px]">
           <Search />
         </div>}
       </div>
 
       <div className="overflow-x-auto mt-10">
-        <table className="w-full min-w-[1000px]">
+        <table className="w-full min-w-[1000px] text-sm">
           <thead className="mb-[11px]">
             <tr>
               <td className="text-lightGrey text-xs font-medium">
@@ -238,7 +235,7 @@ export default function ShipmentTable({ shipdata }) {
                       <img src={link} alt="" />
                     </div>
                   </td>
-                  <td className="w-[110px] font-medium">
+                  <td className="w-[110px] pl-[10px] font-medium">
                     {ship.shipping_type === "import" ? (
                       ship.origin_port_code ? (
                         <p>{ship.origin_port_code}</p>
@@ -266,7 +263,7 @@ export default function ShipmentTable({ shipdata }) {
                   </td>
                   <td className="font-medium">{ship.createdAt.slice(0, 10)}</td>
                   <td className="w-[150px] font-medium">
-                    <p className="max-w-[50px]">{ship._id}</p>
+                    <p className="max-w-[50px]">{`${ship._id.slice(0, 16)}...`}</p>
                   </td>
                   <td>
                     <div className="flex flex-1 justify-end items-center min-w-[230px]">
@@ -299,21 +296,3 @@ export default function ShipmentTable({ shipdata }) {
     </>
   );
 }
-
-// const [searchTerm] = useState(["origin_port_city", "origin_port_code", "origin_port_country", "delivery_location", "destination_port_code", "destination_port_city", "destination_port_country", "_id",]);
-// function searches(e) {
-//   const matchedShip = shipdata.filter((item) => {
-//     return searchTerm.some((newItem) => {
-//       if(item[newItem]){
-//         return (
-//           item[newItem]
-//               .toString()
-//               .toLowerCase()
-//               .indexOf(input.toLowerCase()) > -1
-//         );
-//       }
-//     });
-//   });
-//   setShipment(matchedShip)
-//   setInput(e.target.value)
-// }

@@ -1,11 +1,11 @@
 //icon
-import uploads from '../../assets/upload.svg';
+import uploads from "../../assets/upload.svg";
 // import files from '../../assets/file.svg';
 // import deletes from '../../assets/delete.svg';
 
 //components
-import UploadedItem from '../uploadeditem/UploadedItem';
-import Button from '../button/Button'
+import UploadedItem from "../uploadeditem/UploadedItem";
+import Button from "../button/Button";
 
 export default function DocUpload({ handleOpenModal }) {
   return (

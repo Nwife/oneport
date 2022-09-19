@@ -16,7 +16,7 @@ export default function Button({text, icon, pathname, color, bgColor, border, di
             onClick={() => navigate(`${pathname}`)}
             disabled= {disabled}
         >
-            <span className='font-medium text-base'>{text}</span>
+            <span className='font-medium text-base text-[14px] '>{text}</span>
             {icon && <img src={icon} className='ml-2' alt="" />}
         </button>
     </>

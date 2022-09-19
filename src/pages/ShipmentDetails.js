@@ -24,7 +24,7 @@ export default function ShipmentDetails() {
   const handleCloseModal = () => {
     setShowModal(false)
   }
-  console.log("loc>>", location.state)
+
 
   return (
     <div>

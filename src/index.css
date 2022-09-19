@@ -57,9 +57,9 @@ table tbody tr:last-child td:last-child{
 .shipment-button button{
     width: fit-content;
 }
-@media(max-width: 767px){
+@media(max-width: 1000px){
     .mobile .sidebar{
-        display: unset;
+        display: block;
         border: 0;
     }
 }

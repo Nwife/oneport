@@ -65,7 +65,10 @@ export default function Modal({ showModal, handleCloseModal }) {
           <UploadDetail />
 
           {/* upload button */}
-          <button onClick={handleCloseModal} className="absolute right-0 rounded-md mt-5 py-4 px-14  font-bold text-white bg-lightGreen">
+          <button
+            onClick={handleCloseModal}
+            className="absolute right-0 rounded-md mt-5 py-4 px-14  font-bold text-white bg-lightGreen"
+          >
             Upload
           </button>
         </div>
