@@ -1,29 +1,45 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 //icons
-import link from '../../assets/link.svg';
-import imports from '../../assets/import.svg';
-import exports from '../../assets/export.svg';
-import cross from '../../assets/cross.svg';
-import caret from '../../assets/caret.svg';
-import searched from '../../assets/search.svg';
+import link from "../../assets/link.svg";
+import imports from "../../assets/import.svg";
+import exports from "../../assets/export.svg";
+import cross from "../../assets/cross.svg";
+import caret from "../../assets/caret.svg";
+import searched from "../../assets/search.svg";
 
 //components
-import Button from '../button/Button';
+import Button from "../button/Button";
 
 //hooks
 // import { useFetch } from '../../hooks/useFetch';
 
 export default function ShipmentTable({ shipdata }) {
   const [dateFilter, setDateFilter] = useState({
-    startDate: '',
-    endDate: ''
+    startDate: "",
+    endDate: "",
   });
-  const [input, setInput] = useState('');
-  const [shipment, setShipment] = useState(shipdata)
+  const ref = useRef();
+  const [input, setInput] = useState("");
+  const [shipment, setShipment] = useState(shipdata);
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
-  const [showDateFilter, setShowDateFilter] = useState(false)
+  const [showDateFilter, setShowDateFilter] = useState(false);
+
+  //creating the click outside to close drop down effect
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu, then close the menu
+      if (showDateFilter && ref.current && !ref.current.contains(e.target)) {
+        setShowDateFilter(false)
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [showDateFilter]);
 
   //seach functionality for port origin code, port origin
   const search = (e) => {
@@ -32,107 +48,134 @@ export default function ShipmentTable({ shipdata }) {
         .toLowerCase()
         .includes(input);
     });
-    setShipment(matchedShipment)
-    setInput(e.target.value)
-  }
- 
+    setShipment(matchedShipment);
+    setInput(e.target.value);
+  };
+
   //import type filter function
   const sortByImport = () => {
-		const shipmentCopy = [...shipment];
-		shipmentCopy.sort((shipA, shipB) => {
-			const shippingTypeA = `${shipA.shipping_type}` ;
-			const shippingTypeB = `${shipB.shipping_type}`;
-			if (sorted.reversed) {
-				return shippingTypeB.localeCompare(shippingTypeA);
-			}
-			return shippingTypeA.localeCompare(shippingTypeB);
-		});
-		setShipment(shipmentCopy);
-		setSorted({ sorted: "import", reversed: !sorted.reversed });
-	};
+    const shipmentCopy = [...shipment];
+    shipmentCopy.sort((shipA, shipB) => {
+      const shippingTypeA = `${shipA.shipping_type}`;
+      const shippingTypeB = `${shipB.shipping_type}`;
+      if (sorted.reversed) {
+        return shippingTypeB.localeCompare(shippingTypeA);
+      }
+      return shippingTypeA.localeCompare(shippingTypeB);
+    });
+    setShipment(shipmentCopy);
+    setSorted({ sorted: "import", reversed: !sorted.reversed });
+  };
 
   //date range filter
   const dateSearch = () => {
-    const shipmentCopy = [...shipment]
-    const matchedDate = shipmentCopy.filter(row => {
-      let filterPass = true
-      const date = new Date(row.createdAt)
-      if(dateFilter.startDate){
-        filterPass = filterPass && (new Date(dateFilter.startDate) < date)
+    const shipmentCopy = [...shipment];
+    const matchedDate = shipmentCopy.filter((row) => {
+      let filterPass = true;
+      const date = new Date(row.createdAt);
+      if (dateFilter.startDate) {
+        filterPass = filterPass && new Date(dateFilter.startDate) < date;
       }
       if (dateFilter.endDate) {
-        filterPass = filterPass && (new Date(dateFilter.endDate)  > date)
+        filterPass = filterPass && new Date(dateFilter.endDate) > date;
       }
-      return filterPass
-    })
-    setShipment(matchedDate)
+      return filterPass;
+    });
+    setShipment(matchedDate);
+  };
 
-  }
-
-  console.log('date>>', dateFilter)
-
-
-  return (
-    <>
-      <div className="flex flex-col space-y-3 bg-white py-3 px-3 shadow-md max-w-[173px]">
+  //search component
+  const Search = () => (
+    <div className="flex flex-col space-y-2 bg-white py-3 px-3 shadow-md max-w-[173px]">
+      <label className="block">
+        <span className="text-sm">Start date:</span>
         <input
           type="date"
           className="p-3 w-[150px] rounded-md bg-lighterGrey"
           value={dateFilter.startDate}
-          placeholder='start date'
           onChange={(e) =>
             setDateFilter({ ...dateFilter, startDate: e.target.value })
           }
         />
+      </label>
+      <label>
+        <span className="text-sm">End date:</span>
         <input
           type="date"
           className="p-3 w-[150px] rounded-md bg-lighterGrey"
-          placeholder='end date'
+          placeholder="end date"
           value={dateFilter.endDate}
           onChange={(e) =>
             setDateFilter({ ...dateFilter, endDate: e.target.value })
           }
         />
-        <button className='bg-lightGreen text-white rounded-md py-2.5 w-[150px]' onClick={dateSearch}>Filter</button>
-        <button className='bg-lightGreen/50 text-white rounded-md py-2.5 w-[150px]' onClick={() => setShipment(shipdata)}>Clear Filter</button>
-      </div>
-      <div className="overflow-x-auto ">
-        <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
-          <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
-            <Button
-              text="Add New Shipment"
-              pathname="/"
-              color="#fff"
-              bgColor="#3AB44A"
-              icon={cross}
-              disabled={true}
-            />
-            <button
-              className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
-              onClick={sortByImport}
-            >
-              <span className="font-medium text-base">Shipment Type</span>
-              <img src={caret} className="ml-2" alt="" />
-            </button>
-            <button
-              className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
-              // onClick={sortByImport}
-            >
-              <span className="font-medium text-base">Shipment Date</span>
-              <img src={caret} className="ml-2" alt="" />
-            </button>
-          </div>
-          <div className="input_container">
-            <input
-              type="text"
-              value={input}
-              onChange={search}
-              className="w-72 py-2 px-3 rounded-md pl-10 border-grey border-[1px] placeholder:text-sm placeholder:text-[#9CA3AF] focus:outline-0"
-              placeholder="search by shipment ID, Destination"
-            />
-            <img src={searched} alt="search" />
+      </label>
+      <button
+        className="bg-lightGreen text-white rounded-md py-2.5 w-[150px]"
+        onClick={() => {
+          dateSearch()
+          setShowDateFilter(false)
+        }}
+      >
+        Filter
+      </button>
+      <button
+        className="bg-lightGreen/70 text-white rounded-md py-2.5 w-[150px]"
+        onClick={() => setShipment(shipdata)}
+      >
+        Clear Filter
+      </button>
+    </div>
+  );
+
+  console.log("date>>", dateFilter);
+
+  return (
+    <>
+      <div className="relative">
+        <div className="overflow-x-auto">
+          <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
+            <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] ">
+              <Button
+                text="Add New Shipment"
+                pathname="/"
+                color="#fff"
+                bgColor="#3AB44A"
+                icon={cross}
+                disabled={true}
+              />
+              <button
+                className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
+                onClick={sortByImport}
+              >
+                <span className="font-medium text-base">Shipment Type</span>
+                <img src={caret} className="ml-2" alt="" />
+              </button>
+              <div className="relative">
+                <button
+                  className="py-3.5 px-6 rounded-md flex items-center text-[#374151] outline-none bg-[#f3f4f6]"
+                  onClick={() => setShowDateFilter(!showDateFilter)}
+                >
+                  <span className="font-medium text-base">Shipment Date</span>
+                  <img src={caret} className="ml-2" alt="" />
+                </button>
+              </div>
+            </div>
+            <div className="input_container">
+              <input
+                type="text"
+                value={input}
+                onChange={search}
+                className="w-72 py-2 px-3 rounded-md pl-10 border-grey border-[1px] placeholder:text-sm placeholder:text-[#9CA3AF] focus:outline-0"
+                placeholder="search by shipment ID, Destination"
+              />
+              <img src={searched} alt="search" />
+            </div>
           </div>
         </div>
+        {showDateFilter && <div ref={ref} className="absolute bottom-14 z-100 left-[450px]">
+          <Search />
+        </div>}
       </div>
 
       <div className="overflow-x-auto mt-10">
@@ -258,19 +301,19 @@ export default function ShipmentTable({ shipdata }) {
 }
 
 // const [searchTerm] = useState(["origin_port_city", "origin_port_code", "origin_port_country", "delivery_location", "destination_port_code", "destination_port_city", "destination_port_country", "_id",]);
-  // function searches(e) {
-  //   const matchedShip = shipdata.filter((item) => {
-  //     return searchTerm.some((newItem) => {
-  //       if(item[newItem]){
-  //         return (
-  //           item[newItem]
-  //               .toString()
-  //               .toLowerCase()
-  //               .indexOf(input.toLowerCase()) > -1
-  //         );
-  //       }    
-  //     });
-  //   });
-  //   setShipment(matchedShip)
-  //   setInput(e.target.value)
-  // }
+// function searches(e) {
+//   const matchedShip = shipdata.filter((item) => {
+//     return searchTerm.some((newItem) => {
+//       if(item[newItem]){
+//         return (
+//           item[newItem]
+//               .toString()
+//               .toLowerCase()
+//               .indexOf(input.toLowerCase()) > -1
+//         );
+//       }
+//     });
+//   });
+//   setShipment(matchedShip)
+//   setInput(e.target.value)
+// }
