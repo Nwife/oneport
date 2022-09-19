@@ -263,7 +263,7 @@ export default function ShipmentTable({ shipdata }) {
                   </td>
                   <td className="font-medium">{ship.createdAt.slice(0, 10)}</td>
                   <td className="w-[150px] font-medium">
-                    <p className="max-w-[50px]">{`${ship._id.slice(0, 16)}...`}</p>
+                    <p className="max-w-[50px]">{ship._id}</p>
                   </td>
                   <td>
                     <div className="flex flex-1 justify-end items-center min-w-[230px]">
