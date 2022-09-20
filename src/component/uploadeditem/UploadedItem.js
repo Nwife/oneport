@@ -1,5 +1,6 @@
 import React from 'react'
 import files from '../../assets/file.svg';
+import refresh from '../../assets/refresh.svg';
 import deletes from '../../assets/delete.svg';
 
 export default function UploadedItem({ by }) {
@@ -11,18 +12,22 @@ export default function UploadedItem({ by }) {
                 <div><img src={files} alt=''></img></div>
                 {/* texts */}
                 {uploadtext ?
-                    <div onClick={()=> setUploadText(false)} className='cursor-pointer'>
+                    <div>
                         <p className='font-bold leading-7'>NXP Form</p>
                         <p className='font-medium text-base leading-7'>NXP-Form.pdf</p>
-                        <p className='text-sm text-lightGrey'>Uploaded by {by}</p>
+                        <p onClick={()=> setUploadText(false)}  className='text-sm text-lightGrey cursor-pointer'>Uploaded by {by}</p>
                     </div>
                 :
-                <div onClick={()=> setUploadText(true)} className='cursor-pointer'>
+                <div>
                     <p className='font-abold leading-7'>Portfolio.png</p>
-                    <p className='text-sm font-medium text-rose-500'>Opps! Upload failed</p>
+                    <p onClick={()=> setUploadText(true)}  className='text-sm font-medium text-rose-500 cursor-pointer'>Opps! Upload failed</p>
                 </div>}
             </div>
-            <div><img src={deletes} alt=''></img></div> 
+            {uploadtext 
+            ? <div><img src={deletes} alt=''></img></div>
+            : <div><img src={refresh} alt=''></img></div>
+            }
+            
         </div> 
   )
 }

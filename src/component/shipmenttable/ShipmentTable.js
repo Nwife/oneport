@@ -175,8 +175,8 @@ export default function ShipmentTable({ shipdata }) {
         </div>}
       </div>
 
-      <div className="overflow-x-auto mt-10">
-        <table className="w-full min-w-[1000px] text-sm">
+      <div className="overflow-x-auto mt-10 rounded-xl">
+        <table className="w-full min-w-[1000px] border-separate border-spacing-0 text-sm">
           <thead className="mb-[11px]">
             <tr>
               <td className="text-lightGrey text-xs font-medium">
@@ -200,7 +200,7 @@ export default function ShipmentTable({ shipdata }) {
               shipment.map((ship) => (
                 <tr key={ship._id}>
                   <td>
-                    <div className="name flex items-center space-x-3 py-[20px]">
+                    <span className="name flex items-center space-x-3 py-[20px] rounded-xl">
                       <img
                         className="ml-[26px]"
                         src={
@@ -212,7 +212,7 @@ export default function ShipmentTable({ shipdata }) {
                         {ship.shipping_type.charAt(0).toUpperCase() +
                           ship.shipping_type.slice(1)}
                       </p>
-                    </div>
+                    </span>
                   </td>
                   <td className="max-w-[150px] font-medium">
                     {ship.shipping_type === "import" ? (

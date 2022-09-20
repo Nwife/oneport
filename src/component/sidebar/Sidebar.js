@@ -5,9 +5,9 @@ import logo from '../../assets/oneport-logo.svg';
 
 export default function Sidebar({ handleToggleMenu }) {
   return (
-    <div className='sidebar hidden md:block h-screen w-60 shrink-0 py-[35px] px-[41px] border-x-[1px] border-x-lighterGrey'>
+    <div className='sidebar hidden md:block h-screen w-60 shrink-0 py-[35px] pl-[41px] border-x-[1px] border-x-lighterGrey'>
         <div><img src={logo} alt="logo" className="w-40" /></div>
-        <nav className='mt-[83px] flex flex-col space-y-8 about'>
+        <nav className='mt-[83px] flex flex-col space-y-10 about h-[70vh] overflow-y-scroll '>
             <NavLink onClick={handleToggleMenu} to='/' className='flex items-center space-x-9 text-md'>
                 <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 .6A2.4 2.4 0 0 0 .6 3v2.4A2.4 2.4 0 0 0 3 7.8h2.4a2.4 2.4 0 0 0 2.4-2.4V3A2.4 2.4 0 0 0 5.4.6H3ZM3 10.2a2.4 2.4 0 0 0-2.4 2.4V15A2.4 2.4 0 0 0 3 17.4h2.4A2.4 2.4 0 0 0 7.8 15v-2.4a2.4 2.4 0 0 0-2.4-2.4H3ZM10.2 3A2.4 2.4 0 0 1 12.6.6H15A2.4 2.4 0 0 1 17.4 3v2.4A2.4 2.4 0 0 1 15 7.8h-2.4a2.4 2.4 0 0 1-2.4-2.4V3ZM10.2 12.6a2.4 2.4 0 0 1 2.4-2.4H15a2.4 2.4 0 0 1 2.4 2.4V15a2.4 2.4 0 0 1-2.4 2.4h-2.4a2.4 2.4 0 0 1-2.4-2.4v-2.4Z" fill="#6B7280"/>

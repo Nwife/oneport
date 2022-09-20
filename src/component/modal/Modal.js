@@ -26,7 +26,7 @@ export default function Modal({ showModal, handleCloseModal }) {
   }, [showModal, handleCloseModal]);
 
   return (
-    <div className="flex  w-screen h-screen fixed left-0 top-0 z-10">
+    <div className="flex w-screen h-screen fixed left-0 top-0 z-10">
       <div className="bg-black opacity-50 h-screen w-full"></div>
       {/* positioned div */}
       <div
