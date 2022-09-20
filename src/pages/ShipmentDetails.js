@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 //icons
@@ -16,6 +16,7 @@ import DocUpload from '../component/docupload/DocUpload';
 export default function ShipmentDetails() {
   const location = useLocation()
   const navigate = useNavigate()
+  const ref = useRef();
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -25,10 +26,15 @@ export default function ShipmentDetails() {
     setShowModal(false)
   }
 
+  // scroll to the topevery time the user navigates to a new page
+  useEffect(() => {
+    ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [location]);
+
 
   return (
-    <div>
-      <div className=" flex-col sm:flex sm:flex-row  justify-between items-center mb-4">
+    <div ref={ref} className='scroll-py-10'>
+      <div className="flex-col sm:flex sm:flex-row  justify-between items-center mb-4">
         <div onClick={() => navigate(-1)} className=' flex items-center gap-x-7 mb-4 sm:mb-0 cursor-pointer'>
             <img src={back} alt=''></img>
             <p className='text-xl sm:text-2xl font-semibold'>Shipments</p>

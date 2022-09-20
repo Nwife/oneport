@@ -31,7 +31,7 @@ export default function CustomerTable({customer}) {
                             <td>
                                 <div className='flex flex-1 justify-end items-center'>
                                     <Link to={`/shipment/${cust.id}`} state={{avatar:cust.Avatar, fname:cust.first_name, lname:cust.last_name, phone:cust.phone}} className='py-3.5 px-5 text-sm rounded-md border-[1px] border-lighterGrey'>Shipments</Link>
-                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white'>Edit</Link>
+                                    <Link to='/' className='py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] hover:bg-[#5DBA69] text-white'>Edit</Link>
                                 </div>
                             </td>     
                         </tr>

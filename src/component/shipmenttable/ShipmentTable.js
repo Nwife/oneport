@@ -282,7 +282,7 @@ export default function ShipmentTable({ shipdata }) {
                           pickuploc: ship.pickup_location,
                           id: ship._id,
                         }}
-                        className="py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white"
+                        className="py-3.5 px-5 text-sm rounded-md bg-lightGreen ml-[19px] mr-[18px] text-white hover:bg-[#5DBA69]"
                       >
                         View Details
                       </Link>

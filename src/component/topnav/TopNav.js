@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom';
 
 //components
@@ -14,6 +14,22 @@ import menuclose from '../../assets/menuclose.svg';
 export default function TopNav() {
   const { pathname } = useLocation()
   const [toggleMenu, setToggleMenu] = useState(false)
+  const ref = useRef()
+
+  //creating the click outside to close drop down effect
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu, then close the menu
+      if (toggleMenu && ref.current && !ref.current.contains(e.target)) {
+        setToggleMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [toggleMenu]);
 
   const handleToggleMenu = () => {
     setToggleMenu(false)
@@ -31,7 +47,7 @@ export default function TopNav() {
                 <p>Temoc</p>
                 <img src={caret} alt="" />
             </div>
-            <div className='mobile'>
+            <div className='mobile' ref={ref}>
               {toggleMenu
                 ? <div className='md:hidden ml-3 cursor-pointer' onClick={() => setToggleMenu(false)}><img src={menuclose} alt="" /></div>
                 : <div className='md:hidden ml-3 cursor-pointer' onClick={() => setToggleMenu(true)}><img src={menu} alt="" /></div>

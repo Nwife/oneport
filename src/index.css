@@ -67,10 +67,8 @@ table tbody tr:last-child td:last-child{
     border-radius: 4px;
     margin-bottom: 4px;
 }
-
 .animate-main{
-    background-color: #3AB44A;
-    /* width: 90%; */
+    background-color: #f5fcf7;
     height: 100%;
     animation-name: load;
     animation-duration: 3s;
@@ -81,7 +79,6 @@ table tbody tr:last-child td:last-child{
     0%{
         width: 0%;
     }
-
     50%{
         width: 50%;
     }

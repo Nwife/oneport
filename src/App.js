@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 //components
@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App flex font-inter min-h-screen">
       <BrowserRouter>
-        <Sidebar />
-        <Content />
+          <Sidebar />
+          <Content />
       </BrowserRouter>
     </div>
   );
