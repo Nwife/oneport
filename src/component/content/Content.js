@@ -11,8 +11,7 @@ export default function Content() {
   return (
     <div className="flex-1 overflow-hidden">
         <TopNav />
-        <div className='py-[50px] md:py-[70px] px-[40px] md:px-[70px] max-h-[calc(100vh_-_99px)] overflow-y-auto'>
-    
+        <div className='content py-[50px] md:py-[70px] px-[40px] md:px-[70px] max-h-[calc(100vh_-_110px)] overflow-y-auto'>
             <Routes>
               <Route index element={<Customers />} />
               <Route path='/shipment/:id' element={<Shipments />} />

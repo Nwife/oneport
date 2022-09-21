@@ -11,9 +11,9 @@ export default function Sidebar({ handleToggleMenu }) {
   console.log('path1', pathname.slice(0, 9))
   console.log('path1', pathname.slice(0, 15))
   return (
-    <div className='sidebar hidden md:block h-screen w-60 shrink-0 py-[35px] pl-[41px] border-x-[1px] border-x-lighterGrey'>
+    <div className='hidden md:block h-screen w-60 shrink-0 py-[35px] pl-[41px] border-x-[1px] border-x-lighterGrey'>
         <div><img src={logo} alt="logo" className="w-40" /></div>
-        <nav className='mt-[83px] flex flex-col space-y-10 about h-[70vh] overflow-y-scroll '>
+        <nav className='mt-[83px] side-b flex flex-col space-y-10 about h-[75vh] overflow-y-scroll '>
             <NavLink onClick={handleToggleMenu} to='/' className='flex items-center justify-between text-md max-w-[162px]'>
                 <span className='block w-[30%]'>
                     <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">

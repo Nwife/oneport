@@ -132,7 +132,7 @@ export default function ShipmentTable({ shipdata }) {
   return (
     <>
       <div className="relative">
-        <div className="overflow-x-auto">
+        <div className="shipment overflow-x-auto">
           <div className="flex justify-between mt-10 shipment-button min-w-[1000px]">
             <div className="flex space-x-4 md:flex-nowrap justify-between md:w-auto max-w-[647px] text-md">
               <Button
@@ -175,7 +175,7 @@ export default function ShipmentTable({ shipdata }) {
         </div>}
       </div>
 
-      <div className="overflow-x-auto mt-10 rounded-xl">
+      <div className="shipment-table overflow-x-auto mt-10 rounded-xl">
         <table className="w-full min-w-[1000px] border-separate border-spacing-0 text-sm">
           <thead className="mb-[11px]">
             <tr>
