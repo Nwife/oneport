@@ -16,13 +16,16 @@
     border-radius: 10px;
 }
 
+.custom-table::-webkit-scrollbar,
 .shipment-table::-webkit-scrollbar {
     height: 6px;
 }
+.custom-table::-webkit-scrollbar,
 .shipment-table::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px white;
     border-radius: 10px;
 }
+.custom-table::-webkit-scrollbar,
 .shipment-table::-webkit-scrollbar-thumb {
     background: rgb(213, 229, 217); 
     border-radius: 10px;

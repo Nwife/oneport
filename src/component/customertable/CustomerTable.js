@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function CustomerTable({customer}) {
   return (
     <div className='customer-table mt-10'>
-            <div className='overflow-x-auto'>
+            <div className='custom-table overflow-x-auto'>
                 <table className='w-full border-separate border-spacing-0 min-w-[1000px]'>
                     <thead className='mb-[11px]'>
                         <tr>
